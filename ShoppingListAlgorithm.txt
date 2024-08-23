@@ -1,0 +1,88 @@
+ShoppingListApp algorithm
+
+Tools used:
+
+Javascript-logic
+React.js-Component and UI design
+Json-server-Data persistence
+Redux-State management tool
+React-router-dom:Routing
+
+Pages
+
+Login Page
+Users should be able to login with their credentials
+User login credentials should be encrypted on sign up, and decrypted when logging in
+
+
+Registration Page:
+
+Users should be able to register with the following information:
+Email address
+Password
+Name
+Surname
+Cell number
+
+Home Page:
+NAVLINKS
+-profile page
+-add a new shopping list 
+-view all existing shopping lists(edit and delete buttons)
+-categories
+-share shopping list
+
+SEARCH BAR
+-Users can search for items  by name
+-The search keyword is shown on the URL after clicking send(query)
+-When users search on the URL search the page is updated and what they searched for
+is autofilled on the search bar
+
+SORT/FILTER INPUT
+sort by:
+name
+Category
+Date added
+
+filter by:name
+
+when the sort function updates the URL will update also
+When users update the URL with a valid sort keyword the page is updated
+
+Categories Page
+Use categories to classify items for better organisation
+
+
+Profile Page
+ 
+Users should be able to
+View their profile
+Update their profile
+Update their login credentials
+
+Data Management
+
+Persistence:
+Use a JSON server to store all the data
+
+State management
+Make use of Redux to manage the state of the application
+
+States:
+Users state
+Categories state
+Names state
+DateAdded state
+
+Performance:
+
+Optimise the app for fast loading and smooth performance.
+
+Privacy & Security:
+
+Protect user data and privacy in accordance with relevant laws and regulations.
+
+
+*Authorisation: make use of protected routing to only give access to pages users should access
+ (eg logged in users shouldn’t see the registration and login pages)
+

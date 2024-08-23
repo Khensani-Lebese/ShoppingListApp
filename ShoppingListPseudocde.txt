@@ -1,0 +1,163 @@
+Tools & Technologies
+
+JavaScript: Logic
+React.js: Component and UI Design
+JSON-server: Data Persistence
+Redux: State Management
+React-router-dom: Routing
+
+Pages:
+
+1. Login Page
+
+Render Login Form:
+
+Render InputField("Email")
+Render InputField("Password", type="password")
+Render Button("Login")
+Handle Login Submission
+OnClick(Login Button):
+
+Encrypt Password
+Fetch user data from JSON-server
+If (Encrypted Password matches stored password):
+Store user session in Redux
+Redirect to Home Page
+Else:
+Display Error Message("Invalid Credentials")
+
+
+2. Registration Page
+
+Render Registration Form
+Render InputField("Email")
+Render InputField("Password", type="password")
+Render InputField("Name")
+Render InputField("Surname")
+Render InputField("Cell number")
+Render Button("Register")
+Handle Registration Submission
+
+OnClick(Register Button):
+Encrypt Password(bycrypt)
+
+Create User Object with Input Data
+POST User Object to JSON-server
+If (Registration Successful):
+Redirect to Login Page
+Else:
+Display Error Message("Registration Failed")
+
+3. Home Page
+Render Navigation Links
+
+Render NavLink("Profile Page", to="/profile")
+Render NavLink("Add New Shopping List", to="/add-shopping-list")
+Render NavLink("View All Shopping Lists", to="/shopping-lists")
+Render NavLink("Categories", to="/categories")
+Render Button("Share Shopping List")
+Search Bar Functionality
+
+Render InputField("Search")
+Render Button("Search")
+OnClick(Search Button):
+Update URL with search query
+Fetch Items from JSON-server matching query
+Render Items
+Sort/Filter Input
+
+Render Select("Sort By", options=["Name", "Category", "Date Added"])
+Render Select("Filter By", options=["Name"])
+OnChange(Sort/Filter Select):
+Update URL with sort/filter parameters
+Fetch Items from JSON-server based on parameters
+Render Sorted/Filtered Items
+ 
+4. Categories Page
+Render Categories
+
+Fetch Categories from JSON-server
+Render CategoryList(CategoryItems)
+Category Interaction
+
+Allow users to select categories
+OnSelect(Category):
+Filter Items by selected category
+Render Filtered Items
+5. Profile Page
+Render User Profile
+
+Fetch User Data from Redux
+Render InputField("Name", value=user.name)
+Render InputField("Surname", value=user.surname)
+Render InputField("Email", value=user.email)
+Render InputField("Cell Number", value=user.cellNumber)
+Render Button("Update Profile")
+Handle Profile Update
+
+OnClick(Update Profile Button):
+POST updated user data to JSON-server
+If (Update Successful):
+Update Redux Store with new data
+Display Success Message("Profile Updated")
+Else:
+Display Error Message("Update Failed")
+Render Change Password Form
+
+Render InputField("Current Password", type="password")
+Render InputField("New Password", type="password")
+Render InputField("Confirm New Password", type="password")
+Render Button("Change Password")
+Handle Password Change
+
+OnClick(Change Password Button):
+Verify current password
+If (Verification Successful):
+Encrypt new password
+Update user data in JSON-server
+Display Success Message("Password Changed")
+Else:
+Display Error Message("Password Change Failed")
+Data Management:
+1. Persistence
+Use JSON-server for Data Storage
+User Data
+Shopping Lists
+Categories
+2. State Management with Redux
+Redux Store Structure
+users: []
+categories: []
+shoppingLists: []
+Redux Actions & Reducers
+Action: LOGIN_USER(payload)
+Reducer: Update user state
+Action: LOGOUT_USER()
+Reducer: Clear user state
+Action: UPDATE_PROFILE(payload)
+Reducer: Update user profile state
+Action: FETCH_SHOPPING_LISTS()
+Reducer: Set shopping lists state
+Action: ADD_SHOPPING_LIST(payload)
+Reducer: Add new shopping list to state
+Action: DELETE_SHOPPING_LIST(id)
+Reducer: Remove shopping list from state
+Action: UPDATE_SHOPPING_LIST(payload)
+Reducer: Update shopping list in state
+Action: FETCH_CATEGORIES()
+Reducer: Set categories state
+Performance:
+Optimization Strategies
+Implement lazy loading for components
+Use React.memo for expensive component rendering
+Minimize state updates
+Debounce search and filter inputs
+Privacy & Security:
+1. User Data Protection
+Encrypt Passwords using bcrypt or similar library
+Store encrypted passwords in JSON-server
+2. Authorization
+Protected Routes with React-router-dom
+Wrap protected routes with authentication checks
+Redirect unauthorized users to Login Page
+Prevent access to Login/Registration for authenticated users
