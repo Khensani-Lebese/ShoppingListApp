@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "c20d",
+      "email": "khensanilebese0@gmail.com",
+      "password": "$2a$10$6ZrF8Uzdvu81MZSMgxcYa.aRXvBdG39u1J94XfCgRQ2yN7mJbSOMK",
+      "name": "Khensani",
+      "surname": "Lebese",
+      "cellNumber": "0723816443",
+      "profilePicture": "blob:http://localhost:5177/f1164add-2dcf-48cd-8a35-277d99e91ced"
+    },
+    {
+      "id": "5493",
+      "email": "nyikolebese0@gmail.com",
+      "password": "$2a$10$S1ZoN8Py2fdRoLKkrFTmpu6WcquigC/YNPA45VLkdKoNdOkXzwNP6",
+      "name": "Nyiko",
+      "surname": "Lebese",
+      "cellNumber": "0743567890",
+      "profilePicture": "blob:http://localhost:5177/c33fc48d-13e2-4964-83bc-bc7350b38ddb"
+    },
+    {
+      "id": "9f1a",
+      "email": "Khensani@tut.com",
+      "password": "$2a$10$UCqhq/TtfpfA5k0BzjH.EO78/GOYCIBTUtWP5GVbR.FEonFcmpnfK",
+      "name": "khensi",
+      "surname": "Lebese",
+      "cellNumber": "0875467890",
+      "profilePicture": "blob:http://localhost:5173/98c041ac-477c-44e4-8659-95aded9acfee"
+    }
+  ],
+  "lists": [
+    {
+      "id": "2f6d"
+    }
+  ]
+}
