@@ -4,9 +4,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteList, updateList } from '../redux/actions';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
 
 const ListItem = ({ list }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     dispatch(deleteList(list.id));
@@ -18,14 +21,16 @@ const ListItem = ({ list }) => {
     if (updatedName && updatedQuantity) {
       dispatch(updateList({ id: list.id, name: updatedName, quantity: updatedQuantity }));
     }
+
+    navigate(`/update-list/${list.id}`);
   };
 
   return (
     <ItemContainer>
       <ItemName>{list.name}</ItemName>
       <ItemDetails>Quantity: {list.quantity}</ItemDetails>
-      <ItemDetails>Notes: {list.notes}</ItemDetails>
-      <ItemDetails>Category: {list.category}</ItemDetails>
+      {list.notes && <ItemDetails>Notes: {list.notes}</ItemDetails>}
+      {list.category && <ItemDetails>Category: {list.category}</ItemDetails>}
       {list.image && <ItemImage src={list.image} alt={list.name} />}
       <ButtonContainer>
         <Button onClick={handleUpdate}>Update</Button>

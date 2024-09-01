@@ -1,5 +1,3 @@
-// src/pages/UpdateListPage.jsx
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,14 +9,15 @@ const UpdateListPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const lists = useSelector((state) => state.lists || []);
-  const listToUpdate =lists && lists.length>0 && lists.find((list) => list.id === parseInt(id));
-
-  const [name, setName] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [notes, setNotes] = useState('');
-  const [category, setCategory] = useState('');
-  const [image, setImage] = useState(null);
-
+  
+  // Fetch the lists on component mount
+  useEffect(() => {
+    console.log('Fetching lists...');
+    dispatch(fetchLists());
+  }, [dispatch]);
+  
+  const listToUpdate = lists && lists.length > 0 && lists.find((list) => list.id === parseInt(id));
+  
   useEffect(() => {
     if (listToUpdate) {
       setName(listToUpdate.name);
@@ -27,6 +26,12 @@ const UpdateListPage = () => {
       setCategory(listToUpdate.category);
     }
   }, [listToUpdate]);
+
+  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [notes, setNotes] = useState('');
+  const [category, setCategory] = useState('');
+  const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -41,7 +46,7 @@ const UpdateListPage = () => {
         quantity,
         notes,
         category,
-        image: image ? URL.createObjectURL(image) : listToUpdate.image
+        image: image ? URL.createObjectURL(image) : listToUpdate.image,
       };
 
       dispatch(updateList(updatedList));

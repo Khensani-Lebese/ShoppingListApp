@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addList } from '../redux/actions';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const ListForm = () => {
   const [name, setName] = useState('');
@@ -12,6 +15,7 @@ const ListForm = () => {
   const [category, setCategory] = useState('');
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -29,7 +33,10 @@ const ListForm = () => {
         formData.append('image', image);
       }
 
-      dispatch(addList(formData));
+      dispatch(addList(formData),() =>{
+      
+
+      });
 
       // Clear form fields after submission
       setName('');
@@ -37,6 +44,8 @@ const ListForm = () => {
       setNotes('');
       setCategory('');
       setImage(null);
+      alert('Item has been added successfully!');
+      navigate('/shopping-list');
     }
   };
 
@@ -72,7 +81,12 @@ const ListForm = () => {
         accept="image/*"
         onChange={handleImageChange}
       />
+      <ButtonContainer>
       <Button type="submit">Add Item</Button>
+      <BackButton type="button" onClick={() => navigate('/shopping-list')}>
+          Back to Shopping List
+        </BackButton>
+        </ButtonContainer>
     </Form>
   );
 };
@@ -112,8 +126,28 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  
 
   &:hover {
     background-color: #0056b3;
   }
+`;
+
+const BackButton = styled.button`
+  padding: 10px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5a6268;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Adds space between the buttons */
 `;

@@ -23,7 +23,7 @@ const ShoppingListPage = () => {
         <Title>Shopping List</Title>
         <NavBar>
           <NavLink to="/add-list">Add List</NavLink>
-          <NavLink to="/update-list">Update List</NavLink>
+          
           <NavLink to="/view-list">View List</NavLink>
         </NavBar>
       </Header>
